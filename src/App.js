@@ -35,22 +35,22 @@ const App = () => {
                 /> */}
                 <button onClick={() => searchMovies(search)}>Search</button>
             </div>
+                <div className="sort">
+                    <h3>Sort movies by Year</h3>
+                    <input className="radio" type="radio" value={"Ascending"} name="sortByYear"/>Ascending
+                    <input className="radio" type="radio" value={"Descending"} name="sortByYear"/>Descending
+                </div>
             {
                 movies?.length > 0
                 ? (
-                <div className="container">
-                    <h3>Sort movies by Year</h3>
-                <input className="radio" type="radio" value={"Ascending"} name="sortByYear"/>Ascending
-                <input className="radio" type="radio" value={"Descending"} name="sortByYear"/>Descending
-                {
                     movies.sort((a,b) => a.Year>b.Year ? -1 : 1)
                     .map((movie,index) => (
-                        <div key={index} className="cart">
-                            <MovieCard movie={movie} />
+                        <div className="container">
+                            <div key={index} className="cart">
+                                <MovieCard movie={movie} />
+                            </div>
                         </div>
                     ))
-                }
-                </div>
                 ) :
                 (
                 <div className="empty">
